@@ -7,10 +7,9 @@ HALF_WIDTH = WIDTH // 2
 FPS = 60
 
 # player settings
-player_pos1 = 10, HALF_HEIGHT
-player_pos2 = WIDTH - 10, HALF_HEIGHT
 player_speed1 = 0
 player_speed2 = 0
+Max_score = 10
 
 # colors
 White = (255, 255, 255)
