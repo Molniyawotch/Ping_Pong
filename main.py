@@ -3,6 +3,7 @@ import pygame.freetype as font
 import random
 from settings import *
 import pygame.mixer as mix
+import ui
 
 
 class Player:
@@ -143,6 +144,9 @@ class Application:
         self.finish1 = pg.Rect(0, 0, 3, HEIGHT)
         self.finish2 = pg.Rect(WIDTH - 3, 0, 3, HEIGHT)
 
+        # ui
+        self.player_button = ui.Button("Play", (HALF_WIDTH - 150, HALF_HEIGHT // 2 + 10), (300, 80))
+
     def __events(self):
         for event in pg.event.get():
             if event.type == pg.QUIT:
@@ -151,15 +155,16 @@ class Application:
                 pass
 
     def _main_menu(self):
+        self.player_button.update(self.sc)
         self.font.render_to(self.sc, (HALF_WIDTH - self.font.get_rect("Main Menu").width / 2, HEIGHT / 12), 'Main Menu',
-                            fgcolor=White)
-        self.play_button = pg.Rect(HALF_WIDTH - 150, HALF_HEIGHT // 2 + 10, 300, 80)
-        pg.draw.rect(self.sc, White, self.play_button)
-        self.cosmetic_button = pg.Rect(HALF_WIDTH - 150, HALF_HEIGHT - 45, 300, 80)
-        pg.draw.rect(self.sc, White, self.cosmetic_button)
-        self.exit_button = pg.Rect(HALF_WIDTH - 150, HALF_HEIGHT + 70, 300, 80)
-        pg.draw.rect(self.sc, White, self.exit_button)
-        self.font.render_to(self.sc, (HALF_WIDTH - self.font.get_rect("Play").width / 2, HALF_HEIGHT // 2 + 15), 'Play')
+                             fgcolor=White)
+        # self.play_button = pg.Rect(HALF_WIDTH - 150, HALF_HEIGHT // 2 + 10, 300, 80)
+        # pg.draw.rect(self.sc, White, self.play_button)
+        # self.cosmetic_button = pg.Rect(HALF_WIDTH - 150, HALF_HEIGHT - 45, 300, 80)
+        # pg.draw.rect(self.sc, White, self.cosmetic_button)
+        # self.exit_button = pg.Rect(HALF_WIDTH - 150, HALF_HEIGHT + 70, 300, 80)
+        # pg.draw.rect(self.sc, White, self.exit_button)
+        # self.font.render_to(self.sc, (HALF_WIDTH - self.font.get_rect("Play").width / 2, HALF_HEIGHT // 2 + 15), 'Play')
 
     def _game_loop(self):
         pg.draw.rect(self.sc, self.floor_color, self.floor)
